@@ -1,0 +1,34 @@
+.drift__edit-display {
+  display: grid;
+  grid-template-columns: 10rem 5rem 10rem;
+}
+
+.drift__people-list {
+  aspect-ratio: 1/2;
+  width: 10rem;
+  border: 2px solid #ffff00;
+  padding: .5rem;
+  border-radius: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.drift__person {
+  width: 95%;
+  background-color: grey;
+  margin: 0 auto;
+  padding: .5rem 1rem;
+  border-radius: 8px;
+  margin-bottom: .5rem;
+  cursor: pointer;
+}
+.drift__person.selected {
+  background-color: green;
+}
+
+.drift__edit-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
