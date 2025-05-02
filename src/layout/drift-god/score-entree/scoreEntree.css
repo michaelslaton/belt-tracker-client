@@ -1,0 +1,25 @@
+.score-entree {
+  display: grid;
+  grid-template-columns: 7rem repeat(5,10rem);
+  place-items: center;
+  gap: .5rem;
+}
+.score-entree > h1 {
+  text-align: start;
+}
+
+.score-entree__point {
+  width: 10rem;
+  border: 1px solid white;
+  height: 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.score-entree__point.lit {
+  background-color: green;
+  border-color: green;
+}
+.score-entree__point.lit.winner {
+  background-color: yellow;
+  border-color: white;
+}

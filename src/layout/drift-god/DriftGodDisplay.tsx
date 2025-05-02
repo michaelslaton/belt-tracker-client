@@ -3,8 +3,9 @@ import { default as contenders } from "../../data/contenders";
 import Contender from "../../types/contender.type";
 import { useState } from "react";
 import './driftGod.css';
+import ScoreEntree from "./score-entree/ScoreEntree";
 
-type EntreesType = Contender & { 
+export type EntreesType = Contender & { 
   score: number;
 };
 
@@ -78,6 +79,21 @@ const DriftGodDisplay = () => {
 
     setDriftState({...driftState, edit: false})
   }
+
+  const handleScoreChange = (entreeId: number, type: string) => {
+    const index = driftState.entrees.findIndex((entree) => entree.id === entreeId);
+    if (index === -1) return;
+  
+    const updatedEntrees = [...driftState.entrees];
+    const updatedEntry = { ...updatedEntrees[index] };
+  
+    if (type === 'plus') updatedEntry.score++;
+    else updatedEntry.score--;
+  
+    updatedEntrees[index] = updatedEntry;
+  
+    setDriftState({ ...driftState, entrees: updatedEntrees });
+  };
   
   const populateContenders = () => {
     const results = contenders
@@ -129,10 +145,13 @@ const DriftGodDisplay = () => {
         <div className='drift__score-display'>
           {driftState.entrees.map((entree)=>(
             <>
-              {entree.name}
+              <ScoreEntree entree={entree} handleScoreChange={handleScoreChange}/>
             </>
           ))}
         </div>
+      }
+      { !driftState.edit &&
+        <button onClick={()=> setDriftState({...driftState, edit: true})}>Edit</button>
       }
       <button onClick={()=> navigate('/')}>Home</button>
     </>
