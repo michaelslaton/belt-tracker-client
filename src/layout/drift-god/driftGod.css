@@ -1,11 +1,20 @@
+.drift__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2%;
+}
+
 .drift__edit-display {
   display: grid;
-  grid-template-columns: 10rem 5rem 10rem;
+  grid-template-columns: 15rem 5rem 15rem;
+  gap: 1rem;
 }
 
 .drift__people-list {
   aspect-ratio: 1/2;
-  width: 10rem;
+  width: 15rem;
   border: 2px solid #ffff00;
   padding: .5rem;
   border-radius: 10px;
@@ -21,8 +30,13 @@
   border-radius: 8px;
   margin-bottom: .5rem;
   cursor: pointer;
+  border: 2px solid transparent;
+}
+.drift__person:hover {
+  border-color: white;
 }
 .drift__person.selected {
+  background-color: #6f00ff;
   background-color: green;
 }
 
@@ -31,6 +45,21 @@
   flex-direction: column;
   justify-content: center;
   height: 100%;
+}
+
+.drift__new-god--wrapper {
+  height: 4rem;
+  width: 100%;
+  text-align: center;
+}
+.drift__new-god {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.drift__control-buttons-wrapper {
+  display: flex;
+  gap: .5rem;
 }
 
 /* .drift__score-display {

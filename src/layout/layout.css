@@ -6,3 +6,18 @@
   gap: 0 1rem;
   margin-top: 8%;
 }
+
+.business-button {
+  outline: 0;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: .3rem 1rem;
+  text-transform: uppercase;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+.business-button:hover {
+  background-color: white;
+  color: black;
+}

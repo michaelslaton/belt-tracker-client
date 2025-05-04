@@ -9,12 +9,12 @@ const contendersData: Contender[] = [
   {
     id: 2,
     name: 'Mike',
-    color: 'purple',
+    color: '#6f00ff',
   },
   {
     id: 3,
     name: 'Quin',
-    color: 'black',
+    color: 'yellow',
   },
   {
     id: 4,
@@ -24,17 +24,17 @@ const contendersData: Contender[] = [
   {
     id: 5,
     name: 'Wes',
-    color: 'green',
+    color: '#136b42',
   },
   {
     id: 6,
     name: 'Kira',
-    color: 'green',
+    color: '#07be07',
   },
   {
     id: 7,
     name: 'David',
-    color: 'pink',
+    color: '#64136b',
   },
 ];
 

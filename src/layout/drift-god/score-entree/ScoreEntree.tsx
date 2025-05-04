@@ -15,7 +15,12 @@ const ScoreEntree = ({ entree, handleScoreChange }: ScoreEntreeProps) => {
 
   return (
     <div className='score-entree'>
-      <h2>{entree.name}</h2>
+      <h2 
+        style={{ color: `${entree.color}` }}
+        className={`score-entree__name ${entree.score === 5 && 'winner'}`}
+      >
+        {entree.name}
+      </h2>
       <div
         className={`score-entree__point ${entree.score >= 1 && 'lit'} ${entree.score === 5 && 'winner'}`}
         onClick={()=> handleClick(1)}
@@ -33,7 +38,7 @@ const ScoreEntree = ({ entree, handleScoreChange }: ScoreEntreeProps) => {
         onClick={()=> handleClick(4)}
       />
       <div
-        className={`score-entree__point ${entree.score >= 5 && 'lit'} ${entree.score === 5 && 'winner'}`}
+        className={`score-entree__point ${entree.score === 5 && 'lit'} ${entree.score === 5 && 'winner'}`}
         onClick={()=> handleClick(5)}
       />
     </div>

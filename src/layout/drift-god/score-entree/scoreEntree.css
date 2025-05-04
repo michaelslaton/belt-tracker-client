@@ -4,8 +4,11 @@
   place-items: center;
   gap: .5rem;
 }
-.score-entree > h1 {
-  text-align: start;
+
+.score-entree__name {
+  text-transform: uppercase;
+  justify-self: end;
+  margin-right: 1rem;
 }
 
 .score-entree__point {
@@ -14,12 +17,17 @@
   height: 2rem;
   border-radius: 5px;
   cursor: pointer;
+  background-color: black;
 }
 .score-entree__point.lit {
-  background-color: green;
-  border-color: green;
+  background-color: rgb(0, 255, 0);
+  border-color: rgb(0, 255, 0);
 }
 .score-entree__point.lit.winner {
   background-color: yellow;
-  border-color: white;
+  border-color: yellow;
+  -webkit-box-shadow:0px 0px 96px 14px rgba(255,255,0,1);
+  -moz-box-shadow: 0px 0px 96px 14px rgba(255,255,0,1);
+  box-shadow: 0px 0px 96px 14px rgba(255,255,0,1);
+  z-index: 99;
 }

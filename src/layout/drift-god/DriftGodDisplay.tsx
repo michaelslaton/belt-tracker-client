@@ -14,6 +14,7 @@ type DriftStateType = {
   addSelected: Contender[];
   removeSelected: Contender[];
   edit: boolean;
+  newGod: string | null;
 };
 
 const DriftGodDisplay = () => {
@@ -23,6 +24,7 @@ const DriftGodDisplay = () => {
     addSelected: [],
     removeSelected: [],
     edit: true,
+    newGod: null,
   });
   
   const isSelected = (id: number, type: 'add' | 'remove'): boolean => {
@@ -82,6 +84,7 @@ const DriftGodDisplay = () => {
 
   const handleScoreChange = (entreeId: number, type: string) => {
     const index = driftState.entrees.findIndex((entree) => entree.id === entreeId);
+    let newGod: boolean = false;
     if (index === -1) return;
   
     const updatedEntrees = [...driftState.entrees];
@@ -90,9 +93,23 @@ const DriftGodDisplay = () => {
     if (type === 'plus') updatedEntry.score++;
     else updatedEntry.score--;
   
+    if(updatedEntry.score === 5) newGod = true;
+
     updatedEntrees[index] = updatedEntry;
   
-    setDriftState({ ...driftState, entrees: updatedEntrees });
+    if(!newGod) setDriftState({ ...driftState, entrees: updatedEntrees });
+    else setDriftState({ ...driftState, entrees: updatedEntrees, newGod: updatedEntry.name })
+  };
+
+  const handleFinish = () => {
+    setDriftState({
+      ...driftState,
+      edit: true,
+      newGod: null,
+      entrees: [],
+      addSelected: [],
+      removeSelected: [],
+    });
   };
   
   const populateContenders = () => {
@@ -114,7 +131,7 @@ const DriftGodDisplay = () => {
   };
 
   return (
-    <>
+    <div className='drift__wrapper'>
       { driftState.edit ?
         <div className='drift__edit-display'>
           <div className='drift__people-list'>
@@ -122,10 +139,10 @@ const DriftGodDisplay = () => {
           </div>
           
           <div className='drift__edit-controls'>
-            <button onClick={()=> handleAdd()}>Add</button>
-            <button onClick={()=> handleReset()}>Reset</button>
-            <button onClick={()=> handleRemove()}>Remove</button>
-            <button onClick={()=> handleSet()}>Set!</button>
+            <button className='business-button' onClick={()=> handleAdd()}>Add</button>
+            <button className='business-button' onClick={()=> handleReset()}>Reset</button>
+            <button className='business-button' onClick={()=> handleRemove()}>Remove</button>
+            <button className='business-button' onClick={()=> handleSet()}>Set!</button>
           </div>
 
           <div className='drift__people-list'>
@@ -142,19 +159,34 @@ const DriftGodDisplay = () => {
           </div>
         </div>
         :
-        <div className='drift__score-display'>
-          {driftState.entrees.map((entree)=>(
-            <>
-              <ScoreEntree entree={entree} handleScoreChange={handleScoreChange}/>
-            </>
-          ))}
-        </div>
+        <>
+          <div className='drift__new-god--wrapper'>
+            { driftState.newGod &&
+              <>
+                <h1 className='drift__new-god'>Presenting</h1>
+                <h1 className='drift__new-god'>100% Ultimate Drift God {driftState.newGod}</h1>
+              </>
+            }
+          </div>
+          <div className='drift__score-display'>
+            {driftState.entrees.sort((a, b) => b.score - a.score).map((entree)=>(
+              <>
+                <ScoreEntree entree={entree} handleScoreChange={handleScoreChange}/>
+              </>
+            ))}
+          </div>
+        </>
       }
-      { !driftState.edit &&
-        <button onClick={()=> setDriftState({...driftState, edit: true})}>Edit</button>
-      }
-      <button onClick={()=> navigate('/')}>Home</button>
-    </>
+      <div className='drift__control-buttons-wrapper'>
+        { !driftState.edit &&
+          <button className='business-button' onClick={()=> setDriftState({...driftState, edit: true})}>Edit</button>
+        }
+          <button className='business-button' onClick={()=> navigate('/')}>Home</button>
+        { driftState.newGod &&
+          <button className='business-button' onClick={()=> handleFinish()}>Finish</button>
+        }
+      </div>
+    </div>
   );
 };
 
