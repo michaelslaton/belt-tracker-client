@@ -16,6 +16,8 @@
   background-color: black;
   color: white;
   cursor: pointer;
+  display: grid;
+  place-content: center;
 }
 .business-button:hover {
   background-color: white;

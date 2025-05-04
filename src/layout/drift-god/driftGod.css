@@ -45,16 +45,19 @@
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  gap: 1rem;
 }
 
 .drift__new-god--wrapper {
   height: 4rem;
   width: 100%;
   text-align: center;
+  z-index: 99;
 }
 .drift__new-god {
   margin: 0;
   text-transform: uppercase;
+  z-index: 99;
 }
 
 .drift__control-buttons-wrapper {
