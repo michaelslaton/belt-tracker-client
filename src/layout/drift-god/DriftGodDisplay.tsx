@@ -2,8 +2,8 @@ import { NavigateFunction, useNavigate } from "react-router-dom";
 import { default as contenders } from "../../data/contenders";
 import Contender from "../../types/contender.type";
 import { useState } from "react";
-import './driftGod.css';
 import ScoreEntree from "./score-entree/ScoreEntree";
+import './driftGod.css';
 
 export type EntreesType = Contender & { 
   score: number;
@@ -26,6 +26,13 @@ const DriftGodDisplay = () => {
     edit: true,
     newGod: null,
   });
+
+  const isThereAWinner = () => {
+    const winner = driftState.entrees.some((entree)=> (entree.score === 5));
+    console.log(winner)
+    if(!winner) return false;
+    return true;
+  };
   
   const isSelected = (id: number, type: 'add' | 'remove'): boolean => {
     const selectedList = type === 'add' ? driftState.addSelected : driftState.removeSelected;
@@ -131,7 +138,7 @@ const DriftGodDisplay = () => {
   };
 
   return (
-    <div className='drift__wrapper'>
+    <div className={`drift__wrapper ${isThereAWinner() && 'winner'}`}>
       { driftState.edit ?
         <div className='drift__edit-display'>
           <div className='drift__people-list'>

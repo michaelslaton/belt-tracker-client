@@ -36,6 +36,11 @@ const contendersData: Contender[] = [
     name: 'David',
     color: '#64136b',
   },
+  {
+    id: 8,
+    name: 'Hina',
+    color: '#FFD1DC',
+  }
 ];
 
 export default contendersData;

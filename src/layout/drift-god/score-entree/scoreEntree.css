@@ -8,7 +8,9 @@
 .score-entree__name {
   text-transform: uppercase;
   justify-self: end;
+  margin: 0;
   margin-right: 1rem;
+  text-align: end;
 }
 
 .score-entree__point {
@@ -24,10 +26,10 @@
   border-color: rgb(0, 255, 0);
 }
 .score-entree__point.lit.winner {
-  background-color: yellow;
-  border-color: yellow;
-  -webkit-box-shadow:0px 0px 96px 14px rgba(255,255,0,1);
-  -moz-box-shadow: 0px 0px 96px 14px rgba(255,255,0,1);
-  box-shadow: 0px 0px 96px 14px rgba(255,255,0,1);
+  background: linear-gradient(-45deg, #a47a1e, #ffec94, #b58f3e, #a47a1e);;
+  border-color: #ffec94;
+  -webkit-box-shadow:0px 0px 96px 14px #ffec94;
+  -moz-box-shadow: 0px 0px 96px 14px #ffec94;
+  box-shadow: 0px 0px 96px 14px #ffec94;
   z-index: 80;
 }

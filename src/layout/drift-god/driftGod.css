@@ -1,9 +1,28 @@
 .drift__wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding-top: 2%;
+  padding-top: 3%;
+  height: 100vh;
+  transition: all 1000ms ease-in-out;
+}
+
+.drift__wrapper.winner {
+  background: linear-gradient(-45deg, #b6ab4d, #a8436f, #703f9f, #3f819f, #3f9f47);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .drift__edit-display {
@@ -65,5 +84,9 @@
   gap: .5rem;
 }
 
-/* .drift__score-display {
-} */
+.drift__score-display {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0;
+}
