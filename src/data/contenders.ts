@@ -40,6 +40,11 @@ const contendersData: Contender[] = [
     id: 8,
     name: 'Hina',
     color: '#FFD1DC',
+  },
+  {
+    id: 9,
+    name: 'Isabelle',
+    color: '#ff7b00ff',
   }
 ];
 
